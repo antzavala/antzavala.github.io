@@ -153,6 +153,23 @@
             save_data,
             thankYouMessage
         ];
+        const saveDataLocally = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: `<p>Thank you for participating! Your data will now be downloaded.</p>`,
+    on_finish: function() {
+        const csvData = jsPsych.data.get().csv();
+        const blob = new Blob([csvData], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = `${subject_id}_data.csv`;
+        document.body.appendChild(a);
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+};
+
 
         jsPsych.run(timeline);
     </script>
