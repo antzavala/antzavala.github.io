@@ -169,6 +169,16 @@
         URL.revokeObjectURL(url);
     }
 };
+const timeline = [
+    welcomeMessage,
+    storyPresentation,
+    createCharacterQuestions("Justin"),
+    createCharacterQuestions("Nate"),
+    attentionCheck,
+    save_data,  // Optional; remove if not using an online save method
+    saveDataLocally,  // Add this to trigger the CSV download
+    thankYouMessage
+];
 
 
         jsPsych.run(timeline);
