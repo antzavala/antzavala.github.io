@@ -127,32 +127,10 @@
         // Use subject_id to create a unique filename
         const filename = `${subject_id}.csv`;
 
-        const save_data = {
-            type: jsPsychPipe,
-            action: "save",
-            experiment_id: "omsyQuAKgQDW",  // Replace with your actual experiment ID
-            filename: filename,  // Saving all data into this file
-            data_string: () => jsPsych.data.get().csv()  // Get data in CSV format
-        };
+        
 
-        const thankYouMessage = {
-            type: jsPsychHtmlKeyboardResponse,
-            stimulus: `
-                <h1 class="story-text">Thank you for participating!</h1>
-                <p class="story-text">We greatly appreciate your time and input. Your responses will help us understand decision-making in moral scenarios.</p>
-                <p class="story-text">Press any key to finish the experiment.</p>`,
-            choices: "ALL_KEYS"
-        };
-
-        const timeline = [
-            welcomeMessage,
-            storyPresentation,
-            createCharacterQuestions("Justin"),
-            createCharacterQuestions("Nate"),
-            attentionCheck,
-            save_data,
-            thankYouMessage
-        ];
+       
+        
         const saveDataLocally = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `<p>Thank you for participating! Your data will now be downloaded.</p>`,
